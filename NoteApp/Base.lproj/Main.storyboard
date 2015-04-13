@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14A283o" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="8V7-z0-zEs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="8V7-z0-zEs">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -20,16 +20,16 @@
             </objects>
             <point key="canvasLocation" x="-2182" y="254"/>
         </scene>
-        <!--Notes Table View Controller-->
+        <!--Notes-->
         <scene sceneID="vUQ-fn-UCo">
             <objects>
-                <tableViewController id="1Wg-sp-1h2" customClass="NotesTableViewController" sceneMemberID="viewController">
+                <tableViewController title="Notes" id="1Wg-sp-1h2" customClass="NotesTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="i1K-Un-drp">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Z2y-01-iak">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="Z2y-01-iak">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z2y-01-iak" id="WK6-ze-7Qo">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -41,16 +41,22 @@
                             <outlet property="delegate" destination="1Wg-sp-1h2" id="9Gb-o7-uMc"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="1QP-Zv-D0R"/>
+                    <navigationItem key="navigationItem" title="Notes" id="1QP-Zv-D0R">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="dDd-61-JEp">
+                            <connections>
+                                <action selector="addNewNoteTapped:" destination="1Wg-sp-1h2" id="XbW-mu-6FT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VVm-eS-LoE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1391" y="260"/>
         </scene>
-        <!--View Controller-->
+        <!--Edit Note-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="NoteViewController" id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditNoteViewController" title="Edit Note" id="BYZ-38-t0r" customClass="EditNoteViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -61,7 +67,6 @@
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SKh-58-JfU">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
-                                <color key="backgroundColor" red="0.80126017101796809" green="0.97817804783950613" blue="0.96487501355033389" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <connections>
@@ -74,17 +79,23 @@
                             <constraint firstAttribute="trailing" secondItem="SKh-58-JfU" secondAttribute="trailing" id="SMK-0Z-DON"/>
                             <constraint firstItem="SKh-58-JfU" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="X9z-Nf-yyn"/>
                             <constraint firstItem="SKh-58-JfU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ruJ-2Q-Ysz"/>
-                            <constraint firstItem="SKh-58-JfU" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="tlx-5I-5Mq"/>
+                            <constraint firstItem="SKh-58-JfU" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="xuF-73-5jN"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="O98-kE-bmi">
+                    <navigationItem key="navigationItem" title="Edit Note" id="O98-kE-bmi">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="1zY-4k-8w9">
+                            <connections>
+                                <action selector="cancel:" destination="BYZ-38-t0r" id="1eE-pt-oID"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="kFh-TM-Mue">
                             <connections>
-                                <action selector="saveDocument:" destination="BYZ-38-t0r" id="Z1i-FN-GiD"/>
+                                <action selector="saveNote:" destination="BYZ-38-t0r" id="AB9-Jh-Z8b"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="textView" destination="SKh-58-JfU" id="u50-wb-Tur"/>
