@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EditNoteViewController : UIViewController <UITextViewDelegate>
+@interface EditNoteViewController : UIViewController
 @property (nonatomic, strong) NSURL *noteURL;
 @property (nonatomic, weak) IBOutlet UITextView *textView;
 @end
